@@ -22,19 +22,15 @@ function getDefaultExports(moduleID) {
   return moduleExports
 }
 
-function renderToStaticMarkup(component, props, callback) {
+function renderToStaticMarkup(element, callback) {
   callback(null, {
-    html: ReactDOMServer.renderToStaticMarkup(
-            React.createElement(component, props)
-          )
+    html: ReactDOMServer.renderToStaticMarkup(element)
   });
 }
 
-function renderToString(component, props, callback) {
+function renderToString(element, callback) {
   callback(null, {
-    html: ReactDOMServer.renderToString(
-            React.createElement(component, props)
-          )
+    html: ReactDOMServer.renderToString(element)
   });
 }
 
@@ -87,8 +83,7 @@ function handleRequest(workingDir, request, callback) {
   )
 
   render(
-    component,
-    props,
+    React.createElement(component, props),
     callback
   )
 }
